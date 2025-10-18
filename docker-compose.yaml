@@ -36,30 +36,30 @@ services:
       - "9411:9411"
     networks:
       - spring
-  eureka-server:
-    image: rickeycore/eureka-server
-    container_name: eureka-server
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
+  #  eureka-server:
+  #    image: rickeycore/eureka-server
+  #    container_name: eureka-server
+  #    ports:
+  #      - "8761:8761"
+  #    environment:
+  #      - SPRING_PROFILES_ACTIVE=docker
+  #    networks:
+  #      - spring
+  #    depends_on:
+  #      - zipkin
 
-  apigw:
-    image: rickeycore/apigw
-    container_name: apigw
-    ports:
-      - "8084:8084"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - eureka-server
+  #  apigw:
+  #    image: rickeycore/apigw
+  #    container_name: apigw
+  #    ports:
+  #      - "8084:8084"
+  #    environment:
+  #      - SPRING_PROFILES_ACTIVE=docker
+  #    networks:
+  #      - spring
+  #    depends_on:
+  #      - zipkin
+  #      - eureka-server
 
   customer:
     image: rickeycore/customer
@@ -73,8 +73,8 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
-      - apigw
+      #- eureka-server
+      #- apigw
       - rabbitmq
       - postgres
 
@@ -90,8 +90,8 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
-      - apigw
+      #- eureka-server
+      #- apigw
       - rabbitmq
       - postgres
 
@@ -107,8 +107,8 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
-      - apigw
+      #- eureka-server
+      #- apigw
       - rabbitmq
       - postgres
 
